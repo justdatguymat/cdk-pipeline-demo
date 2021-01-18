@@ -1,9 +1,22 @@
-//import { APIGatewayProxyEvent, Context, APIGatewayProxyResult } from 'aws-lambda';
+import { APIGatewayProxyEvent, Context, APIGatewayProxyResult } from 'aws-lambda';
 
-export async function main(event: any, context: any) {
-  const msg = "Let's go Lambda, baby!";
-  console.log(msg);
-  return msg;
+export async function main(
+  event: APIGatewayProxyEvent,
+  context: Context
+): Promise<APIGatewayProxyResult> {
+  const msg = "Let's go Lambda, baby! v2";
+  console.log(msg, event, context);
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      message: msg,
+      event: event,
+      context: context,
+    }),
+    headers: {
+      lets: 'fucking go',
+    },
+  };
 }
 
 /*
