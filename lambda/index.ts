@@ -1,4 +1,10 @@
-import { APIGatewayProxyEvent, Context, APIGatewayProxyResult } from 'aws-lambda';
+//import { APIGatewayProxyEvent, Context, APIGatewayProxyResult } from 'aws-lambda';
+
+export async function main(event: any, context: any) {
+  const msg = "Let's go Lambda, baby!";
+  console.log(msg);
+  return msg;
+}
 
 /*
 
@@ -23,9 +29,8 @@ export const handler: TaskHandler = (event, context) => {
 };
 
 //export async function main : Handler(event, context): String {
-*/
 
-export async function handler(
+export async function main(
   event: APIGatewayProxyEvent,
   context: Context
 ): Promise<APIGatewayProxyResult> {
@@ -37,3 +42,4 @@ export async function handler(
     },
   };
 }
+*/
