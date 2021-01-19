@@ -17,7 +17,6 @@ export class LambdaStack extends Stack {
       description: `Function generated on: ${new Date().toISOString()}`,
     });
 
-    /*
     const alias = new lambda.Alias(this, 'LambdaAlias', {
       aliasName: 'Prod',
       version: func.currentVersion,
@@ -27,6 +26,5 @@ export class LambdaStack extends Stack {
       alias,
       deploymentConfig: codedeploy.LambdaDeploymentConfig.LINEAR_10PERCENT_EVERY_1MINUTE,
     });
-    */
   }
 }
