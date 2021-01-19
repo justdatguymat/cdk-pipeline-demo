@@ -4,7 +4,7 @@ export async function main(
   event: APIGatewayProxyEvent,
   context: Context
 ): Promise<APIGatewayProxyResult> {
-  const msg = "Let's go Lambda, baby! v2";
+  const msg = "Let's go Lambda, baby! v3";
   console.log(msg, event, context);
   return {
     statusCode: 200,
