@@ -1,9 +1,11 @@
 import * as codedeploy from '@aws-cdk/aws-codedeploy';
 import * as lambda from '@aws-cdk/aws-lambda';
-import { App, Stack, StackProps } from '@aws-cdk/core';
+import * as apiGW from '@aws-cdk/aws-apigateway';
+import { App, Stack, StackProps, CfnOutput } from '@aws-cdk/core';
 
 export class LambdaStack extends Stack {
   public readonly lambdaCode: lambda.CfnParametersCode;
+  public readonly urlOutput: CfnOutput;
 
   constructor(app: App, id: string, props?: StackProps) {
     super(app, id, props);
@@ -17,7 +19,6 @@ export class LambdaStack extends Stack {
       description: `Function generated on: ${new Date().toISOString()}`,
     });
 
-    /*
     const alias = new lambda.Alias(this, 'LambdaAlias', {
       aliasName: 'Prod',
       version: func.currentVersion,
@@ -27,6 +28,14 @@ export class LambdaStack extends Stack {
       alias,
       deploymentConfig: codedeploy.LambdaDeploymentConfig.LINEAR_10PERCENT_EVERY_1MINUTE,
     });
-    */
+
+    const gw = new apiGW.LambdaRestApi(this, 'Gateway', {
+      description: 'API endpoint for the lambda function cdk-demo',
+      handler: func,
+    });
+
+    this.urlOutput = new CfnOutput(this, 'api url', {
+      value: gw.url,
+    });
   }
 }
