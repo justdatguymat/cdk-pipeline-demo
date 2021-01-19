@@ -13,7 +13,7 @@ export class LambdaStack extends Stack {
     const func = new lambda.Function(this, 'Lambda', {
       code: this.lambdaCode,
       handler: 'index.main',
-      runtime: lambda.Runtime.NODEJS_10_X,
+      runtime: lambda.Runtime.NODEJS_12_X,
       description: `Function generated on: ${new Date().toISOString()}`,
     });
 
