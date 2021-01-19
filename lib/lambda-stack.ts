@@ -10,7 +10,7 @@ export class LambdaStack extends Stack {
 
     this.lambdaCode = lambda.Code.fromCfnParameters();
 
-    const func = new lambda.Function(this, 'Lambda', {
+    const func = new lambda.Function(this, 'Lambda_v2', {
       code: this.lambdaCode,
       handler: 'index.main',
       runtime: lambda.Runtime.NODEJS_12_X,
